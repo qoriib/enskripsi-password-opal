@@ -17,6 +17,7 @@ List *list = new List();
 
 bool isAdmin = true;
 
+// Fungsi untuk membuat Node baru
 Node *createNode(char huruf) {
     Node *newNode = new Node();
     newNode->huruf = huruf;
@@ -26,6 +27,7 @@ Node *createNode(char huruf) {
     return newNode;
 }
 
+// Fungsi untuk menambahkan Node di awal
 void insertFirst(char huruf) {
     Node *newNode = createNode(huruf);
 
@@ -39,6 +41,7 @@ void insertFirst(char huruf) {
     }
 }
 
+// Fungsi untuk menambahkan Node di akhir
 void insertLast(char huruf) {
     Node *newNode = createNode(huruf);
 
@@ -52,15 +55,7 @@ void insertLast(char huruf) {
     }
 }
 
-void deleteLast() {
-    Node *tempNode = list->last;
-
-    list->last->prev->next = NULL;
-    list->last = list->last->prev;
-
-    delete tempNode;
-}
-
+// Fungsi untuk menghapus Node di awal
 void deleteFirst() {
     Node *tempNode = list->first;
 
@@ -70,6 +65,17 @@ void deleteFirst() {
     delete tempNode;
 }
 
+// Fungsi untuk menghapus Node di akhir
+void deleteLast() {
+    Node *tempNode = list->last;
+
+    list->last->prev->next = NULL;
+    list->last = list->last->prev;
+
+    delete tempNode;
+}
+
+// Fungsi untuk menampilkan isi list
 void show() {
     cout
         << "================" << endl
@@ -96,6 +102,7 @@ void show() {
     cout << endl;
 }
 
+// Fungsi untuk mengenskripsi
 void encrypt() {
     char hurufDitukar[3];
 
@@ -114,6 +121,7 @@ void encrypt() {
     insertLast('X');
 }
 
+// Fungsi untuk mendenskripsi
 void decrypt() {
     // Menghapus X atau node terakhir
     deleteLast();
@@ -132,6 +140,7 @@ void decrypt() {
     }
 }
 
+// Fungsi untuk memasukkan password ke list
 void input(string password) {
     // Memasukkan semua huruf pada password ke dalam list
     for (int i = 0; i < password.length(); i++) {
@@ -139,6 +148,7 @@ void input(string password) {
     }
 }
 
+// Fungsi utama
 int main() {
     int pilihan;
     string password;
